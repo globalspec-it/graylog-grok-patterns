@@ -1,0 +1,80 @@
+{
+  "extractors": [
+    {
+      "title": "ASA TCP Denies",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{CISCOTIMESTAMP:asa_timestamp} %{IPORHOST:asa_dev} \\: %ASA-\\d-(?<asa_messageid>106023): (?<asa_action>Deny) (?<asa_proto>tcp) src %{NOTSPACE:asa_interface_in}:%{IPV4:asa_src_ip}/%{BASE10NUM:asa_src_port} dst %{NOTSPACE:asa_interface_out}:%{IPV4:asa_dst_ip}/%{BASE10NUM:asa_dst_port}(\\(LOCAL\\\\%{USERNAME:asa_username}\\))? by access-group %{QUOTEDSTRING:asa_accesslist}",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": "%ASA-\\d-106023: Deny tcp"
+    },
+    {
+      "title": "ASA UDP Denies",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{CISCOTIMESTAMP:asa_timestamp} %{IPORHOST:asa_dev} \\: %ASA-\\d-(?<asa_messageid>106023): (?<asa_action>Deny) (?<asa_proto>udp) src %{NOTSPACE:asa_interface_in}:%{IPV4:asa_src_ip}/%{BASE10NUM:asa_src_port} dst %{NOTSPACE:asa_interface_out}:%{IPV4:asa_dst_ip}/%{BASE10NUM:asa_dst_port} by access-group %{QUOTEDSTRING:asa_accesslist}",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": "%ASA-\\d-106023: Deny udp"
+    },
+    {
+      "title": "ASA TCP Drops",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{CISCOTIMESTAMP:asa_timestamp} %{IPORHOST:asa_dev} \\: %ASA-\\d-(?<asa_messageid>106015): (?<asa_action>Deny) (?<asa_proto>TCP) %{DATA:asa_message} from %{IPV4:asa_src_ip}/%{BASE10NUM:asa_src_port} to %{IPV4:asa_dst_ip}/%{BASE10NUM:asa_dst_port} flags %{DATA:tcpflags} on interface %{DATA:asa_interface_in}$",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": "%ASA-\\d-106015: Deny TCP"
+    },
+    {
+      "title": "ASA UDP Discards",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{CISCOTIMESTAMP:asa_timestamp} %{IPORHOST:asa_dev} \\: %ASA-\\d-(?<asa_messageid>710005): (?<asa_proto>UDP) request (?<asa_action>discarded) from %{IPV4:asa_src_ip}/%{BASE10NUM:asa_src_port} to %{DATA:asa_interface_in}:%{IPV4:asa_dst_ip}/%{BASE10NUM:asa_dst_port}$",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": "%ASA-\\d-710005: UDP request discarded"
+    },
+    {
+      "title": "ASA TCP Discards",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "message",
+      "extractor_config": {
+        "grok_pattern": "%{CISCOTIMESTAMP:asa_timestamp} %{IPORHOST:asa_dev} \\: %{IPORHOST:asa_dev} %ASA-\\d-(?<asa_messageid>710005): (?<asa_proto>TCP) request (?<asa_action>discarded) from %{IPV4:asa_src_ip}/%{BASE10NUM:asa_src_port} to %{DATA:asa_interface_in}:%{IPV4:asa_dst_ip}/%{BASE10NUM:asa_dst_port}$",
+        "named_captures_only": true
+      },
+      "condition_type": "regex",
+      "condition_value": "%ASA-\\d-710005: TCP request discarded"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}

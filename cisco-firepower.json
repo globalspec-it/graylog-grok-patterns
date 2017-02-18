@@ -1,0 +1,20 @@
+{
+  "extractors": [
+    {
+      "title": "Firepower SFIMS Message",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:fp_hostname} SFIMS: \\[Primary Detection Engine (.*)\\]\\[%{GREEDYDATA:fp_policy}\\] Connection Type: %{DATA:fp_connection_type}, User: %{DATA:fp_user}, Client: %{DATA:fp_client}, Application Protocol: %{DATA:fp_app_proto}, Web App: %{DATA:fp_webapp}, Access Control Rule Name: %{DATA:fp_rule_name}, Access Control Rule Action: %{DATA:fp_rule_action}, Access Control Rule Reasons: %{DATA:fp_rule_reason}, URL Category: %{DATA:fp_rule_category}, URL Reputation: %{DATA:fp_url_reputation}, URL: %{DATA:fp_url}, Interface Ingress: %{DATA:fp_int_ingress}, Interface Egress: %{DATA:fp_int_egress}, Security Zone Ingress: %{DATA:fp_seczone_ingress}, Security Zone Egress: %{DATA:fp_seczone_egress}, Security Intelligence Matching IP: %{IPORHOST:fp_matching_ipaddr}, Security Intelligence Category: %{DATA:fp_sec_category}, Client Version: %{DATA:fp_client_ver}, Number of File Events: %{INT:fp_file_event_count}, Number of IPS Events: %{INT:fp_ips_event_count}, TCP Flags: %{DATA:fp_tcp_flags}, NetBIOS Domain: %{DATA:fp_netbios_domain}, Initiator Packets: %{INT:fp_init_packets_count}, Responder Packets: %{INT:fp_resp_packets_count}, Initiator Bytes: %{INT:fp_init_bytes}, Responder Bytes: %{INT:fp_resp_bytes}, Context: %{DATA:fp_context}, SSL Rule Name: %{DATA:fp_ssl_rulename}, SSL Flow Status: %{DATA:fp_ssl_flowstatus}, SSL Cipher Suite: %{DATA:fp_ssl_ciphersuite}, SSL Certificate: %{DATA:fp_ssl_cert}, SSL Subject CN: %{DATA:fp_ssl_org_cn}, SSL Subject Country: %{DATA:fp_ssl_org_country}, SSL Subject OU: %{DATA:fp_ssl_org_unit}, SSL Subject Org: %{DATA:fp_ssl_org_name}, SSL Issuer CN: %{DATA:fp_ssl_issuer_cn}, SSL Issuer Country: %{DATA:fp_issuer_country}, SSL Issuer OU: %{DATA:fp_ssl_issuer_ou}, SSL Issuer Org: %{DATA:fp_ssl_issuer_name}, SSL Valid Start Date: %{DATA:fp_ssl_issue_date}, SSL Valid End Date: %{DATA:fp_ssl_expiration_date}, SSL Version: %{DATA:fp_ssl_version}, SSL Server Certificate Status: %{DATA:fp_ssl_status}, SSL Actual Action: %{DATA:fp_ssl_actual_action}, SSL Expected Action: %{DATA:fp_ssl_expected_action}, SSL Server Name: %{DATA:fp_ssl_hostname}, SSL URL Category: %{DATA:fp_ssl_url_category}, SSL Session ID: %{INT:fp_ssl_sessionid}, SSL Ticket Id: %{INT:fp_ssl_ticketid}, \\{%{DATA:fp_proto}\\} %{IPV4:fp_source_ip}:%{INT:fp_source_port} -> %{IPV4:fp_dest_ip}:%{INT:fp_dest_port}",
+        "named_captures_only": true
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
