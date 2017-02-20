@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "TrendMicro DeepScan Messages",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{HOSTNAME:tmds_hostname} CEF:%{INT:tmds_cef}\\|%{DATA:tmds_product_mfg}\\|%{DATA:tmds_product_name}\\|%{DATA:tmds_product_ver}\\|%{DATA:tmds_signature_id}\\|%{DATA:tmds_event}\\|%{INT:tmds_severity}\\|src=%{IPV4:tmds_source_ip} suser=%{USER:tmds_username} msg=%{GREEDYDATA:tmds_message}"
+      },
+      "condition_type": "string",
+      "condition_value": "CEF:"
+    }
+  ],
+  "version": "2.2.0-SNAPSHOT"
+}
