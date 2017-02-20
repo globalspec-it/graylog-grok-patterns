@@ -9,7 +9,7 @@ GROK patterns for use with Graylog 2.x as Input Extractors
 
 ## Prerequisites
 
-Requires the following `System` / `Grok Patterns` be installed on your Graylog server:
+The Cisco patterns require the following `System` / `Grok Patterns` be installed on your Graylog server:
 ```
 CISCOTIMESTAMP
 %{MONTH} +%{MONTHDAY}(?: %{YEAR})? %{TIME}
