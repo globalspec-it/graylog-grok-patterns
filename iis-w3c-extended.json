@@ -1,0 +1,19 @@
+{
+  "extractors": [
+    {
+      "title": "IIS Logfiles",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "%{TIMESTAMP_ISO8601:iis_timestamp} %{HOSTNAME:iis_server_computername} %{IPV4:iis_server_ip} %{WORD:iis_cs_method} %{URIPATH:iis_uri_stem} %{NOTSPACE:iis_uri_query} %{NOTSPACE:iis_username} %{IPV4:iis_client_ip} %{NOTSPACE:iis_client_user_agent} %{NOTSPACE:iis_client_cookie} %{NOTSPACE:iis_client_referrer} %{NOTSPACE:iis_cs_hostname} %{NUMBER:iis_sc_status} %{NUMBER:iis_win32_status} %{NUMBER:iis_sc_bytes} %{NUMBER:iis_cs_bytes} %{NUMBER:iis_time_taken}"
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "2.3.1"
+}
