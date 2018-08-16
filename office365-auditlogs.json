@@ -1,0 +1,20 @@
+{
+  "extractors": [
+    {
+      "title": "Office365 Audit Log Messages",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\\\"%{DATA:PSComputerName}\\\",\\\"%{DATA:RunspaceID}\\\",\\\"%{DATA:ShowComputerName}\\\",\\\"%{DATA:Operation}\\\",\\\"%{DATA:Result}\\\",\\\"%{DATA:LogonType}\\\",\\\"%{DATA:External}\\\",%{DATA:DestFolderID},%{DATA:DestFolderPathName},%{DATA:FolderID},%{DATA:FolderPathName},%{DATA:FolderName},%{DATA:MemberRights},%{DATA:MemberSID},%{DATA:MemberUPN},\\\"%{DATA:ClientInfo}\\\",\\\"%{IP:ClientIP}\\\",%{DATA:ClientMachineName},%{DATA:ClientProcess},%{DATA:ClientVersion},%{DATA:InternalLogonType},%{DATA:MailboxOwnerUPN},%{DATA:MailboxOwnerSID},%{DATA:DestMailboxOwnerUPN},%{DATA:DestMailboxOwnerSID},%{DATA:DestMailboxGUID},%{DATA:CrossMailboxOperation},\\\"%{DATA:LogonDisplayName}\\\",%{DATA:LogonUserSID},\\\"%{DATA:SourceItems}\\\",\\\"%{DATA:SourceFolders}\\\",\\\"%{DATA:SourceItemsIDList}\\\",\\\"%{DATA:SourceItemsSubjectList}\\\",\\\"%{DATA:SourceItemAttachmentsList}\\\",\\\"%{DATA:SourceItemsFolderPathNamesList}\\\",\\\"%{DATA:SourceFolderPathNamesList}\\\",\\\"%{DATA:SourceItemInternetMessageIdsList}\\\",%{DATA:ItemID},%{DATA:ItemSubject},%{DATA:ItemAttachments},%{DATA:ItemInternetMessageID},%{DATA:DirtyProperties},%{DATA:OriginatingServer},%{DATA:OperationProperties},\\\"%{DATA:MailboxGUID}\\\",\\\"%{DATA:MailboxResolvedName}\\\",\\\"%{DATA:LastAccessed}\\\",%{DATA:Identity},%{DATA:IsValid},\\\"%{DATA:ObjectState}\\\"",
+        "named_captures_only": true
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "2.4.6"
+}
