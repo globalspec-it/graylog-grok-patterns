@@ -1,0 +1,33 @@
+{
+  "extractors": [
+    {
+      "title": "Version2-ProxyLogMessages",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\"%{DATA:requestTimestamp}\",\"%{DATA:identities}\",\"%{IP:internalIP}\",\"%{IP:externalIP}\",\"%{IP:destinationIP}\",\"%{DATA:contentType}\",\"%{DATA:verdict}\",\"%{DATA:url}\",\"%{DATA:referrer}\",\"%{DATA:userAgent}\",\"%{DATA:statusCode}\",\"%{DATA:requestSizeBytes}\",\"%{DATA:responseSizeBytes}\",\"%{DATA:responseBodyBytes}\",\"%{DATA:SHA}\",\"%{DATA:categories}\",\"%{DATA:AVdetections}\",\"%{DATA:potentiallyUnwantedApps}\",\"%{DATA:malwareFileInspection}\",\"%{DATA:MalwareName}\",\"%{DATA:MalwareScore}\",\"%{DATA:identityType}\""
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    },
+    {
+      "title": "Version1-DNSLogs",
+      "extractor_type": "grok",
+      "converters": [],
+      "order": 0,
+      "cursor_strategy": "copy",
+      "source_field": "message",
+      "target_field": "",
+      "extractor_config": {
+        "grok_pattern": "\"%{DATA:requestTimestamp}\",\"%{DATA:topIdentity}\",\"%{DATA:allIdentities}\",\"%{IP:interalIP}\",\"%{IP:externalIP}\",\"%{DATA:action}\",\"%{DATA:dnsQueryType}\",\"%{DATA:responseCode}\",\"%{DATA:domain}\",\"%{DATA:categories}\""
+      },
+      "condition_type": "none",
+      "condition_value": ""
+    }
+  ],
+  "version": "2.4.6"
+}
